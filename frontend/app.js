@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const BACKEND = "https://cautious-doodle-jjrx4vg5xg69hq7jx-8000.app.github.dev";
+const BACKEND = "https://yt-rag-backend-3zw5.onrender.com";
 
 function App() {
   const [url, setUrl] = useState("");
