@@ -57,7 +57,11 @@ async def load_video(req: URLRequest):
     splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
     chunks = splitter.create_documents([text])
 
-    embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+    embeddings = HuggingFaceEmbeddings(
+        model_name="all-MiniLM-L6-v2",
+        model_kwargs={"device": "cpu"},
+        encode_kwargs={"batch_size": 8}
+    )
     vector_store = FAISS.from_documents(chunks, embeddings)
 
     return {"message": "Video loaded successfully!"}
